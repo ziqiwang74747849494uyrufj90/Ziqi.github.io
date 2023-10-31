@@ -2,8 +2,6 @@
 title: "About"
 ---
 
-### About this site
+### About me
 
-Sometimes you need to say a bit about the site -- how it was made, where it's hosted, where the source code can be found. 
-
-If this is for a project or analysis, I recommend giving some details about the R package versions that you used to create the content.
+I received my bachelor's degree in environmental science from the University of Cincinnati in the United States in 2022. In 2023, I am studying for a master's degree in the Environmental Health Data Science Program at Columbia University in the United States.
