@@ -3,8 +3,10 @@ output_dir: "."
 navbar:
   title: "Home"
   right:
-    - text: "About"
-      href: about.html
+    - text: "personalsite"
+      href: personalsite.html
+    - text: "flexdashboard"
+      href: flexboard.html
     - icon: fa-envelope fa-lg
       href: mailto:<zw2977@cumc.columbia.edu>
     - icon: fa-github fa-lg

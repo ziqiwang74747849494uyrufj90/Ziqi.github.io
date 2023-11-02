@@ -1,0 +1,62 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(plotly)
+library(dplyr)
+library(tidyverse)
+library(p8105.datasets)
+library(forcats)
+
+data <- p8105.datasets::ny_noaa
+
+data <- data %>%
+        mutate(year = str_sub(date, 1, 4),
+               month = str_sub(date, 6, 7),
+               tmax = as.numeric(tmax),
+               tmin = as.numeric(tmin),
+               month = as.numeric(month),
+               season = case_when(month %in% c(3:5) ~ "Spring",
+                                  month %in% c(6:8) ~ "Summer",
+                                  month %in% c(9:11) ~ "Autumn",
+                                  month %in% c(1,2,12) ~ "Winter")) %>%
+        drop_na(tmax) %>%
+        drop_na(prcp) %>%
+        drop_na(tmin) %>%
+        drop_na(snow) %>%
+        filter(year >=2008)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+data %>%
+  plot_ly(y = ~tmax, color = ~year, type = "box", colors = "viridis")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+data %>%
+  plot_ly(y = ~prcp, color = ~year, type = "violin", colors = "viridis")
+```
+
+### Chart C
+
+```{r}
+data %>%
+  plot_ly(y = ~ tmax, x= ~ tmin, color = ~season, type = "scatter", colors = "viridis")
+```
+
